@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /*Подсвечивание выбранных чатов, ховер-эффектов
+        Сообщения собеседника*/
+        --lavender: #E2C9EF;
+        /*Мои сообщения*/
+        --lilac: #f1e0ff;
+        /*Второстепенный текст*/
+        --purple-shade: #827aa1;
+        /*Основной фон*/
+        --light-purple: #D6D0F9;
+        /*Активные элементы, кнопки*/
+        --indigo: #9E93E6;
+        /*Основной текст*/
+        --dark-purple: #14051A;
+        --background: 280 30% 95%;
+        --foreground: 280 30% 10%;
+        --card: 280 30% 97%;
+        --card-foreground: 280 30% 10%;
+        --popover: 280 30% 97%;
+        --popover-foreground: 280 30% 10%;
+        --primary: 320 100% 60%;
+        --primary-hover: 320 100% 65%;
+        --primary-foreground: 320 100% 98%;
+        --secondary: 220 100% 60%;
+        --secondary-foreground: 220 100% 98%;
+        --muted: 280 20% 90%;
+        --muted-foreground: 280 20% 40%;
+        --accent: 180 100% 50%;
+        --accent-foreground: 180 100% 10%;
+        --destructive: 0 100% 60%;
+        --destructive-foreground: 0 100% 98%;
+        --border: 280 30% 80%;
+        --input: 280 30% 80%;
+        --ring: 320 100% 60%;
+        --radius: 0.5rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
