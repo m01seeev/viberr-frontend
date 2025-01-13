@@ -101,7 +101,7 @@ const handleSignUp = async () => {
     return;
   }
   try {
-    const response = await api.post('/auth/signup', {
+    await api.post('/auth/signup', {
       username: username.value,
       email: email.value,
       firstName: firstName.value,
