@@ -90,7 +90,7 @@ const uploadFile = async (file) => {
   formData.append("file", file);
   formData.append("upload_preset", upload.uploadPreset);
   try {
-    const response = await fetch(upload.imageUploadUrl, {
+    const response = await fetch(upload.uploadUrl, {
       method: "POST",
       body: formData,
     });

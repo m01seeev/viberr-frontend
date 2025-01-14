@@ -93,9 +93,15 @@ const handleSignIn = async () => {
     })
     const token = response.data.token;
     const userId = response.data.userId;
+    const role = response.data.role;
     localStorage.setItem('authToken', token);
     localStorage.setItem('userId', userId)
-    await router.push('/home')
+    localStorage.setItem('role', role)
+    if (role === "USER") {
+      await router.push('/home')
+    } else {
+      await router.push('/admin')
+    }
   } catch (error) {
     console.log(error);
     incorrectSignInData.value = true;

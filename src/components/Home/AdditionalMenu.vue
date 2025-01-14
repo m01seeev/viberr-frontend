@@ -66,6 +66,9 @@ const handleLogOut = async () => {
   localStorage.removeItem("userId");
   localStorage.removeItem("authToken");
   profileStore.setMyProfile(null);
+  uiStore.setMenuOpen(false);
+  chatStore.setOpenChat(false);
+  chatStore.setSelectedChat(null);
   await router.push('/signin');
 }
 

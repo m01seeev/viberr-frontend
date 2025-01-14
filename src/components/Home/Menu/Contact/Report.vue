@@ -11,7 +11,7 @@
         <p :class="{'text-purpleShade': !reasonActive, 'text-primary': reasonActive}">Причина</p>
         <input type="email" @focus="toggleReason" @blur="toggleReason" v-model="reason"
                class="w-full bg-card border-b border-border text-[18px] outline-none focus:border-primary focus:border-b-2">
-
+        <p v-if="error.value !== ''" class="text-[16px] font-nunito text-red-700">{{ error }}</p>
       </div>
       <div class="flex justify-end items-center w-full px-4 gap-2 text-[16px] font-exo text-primary mb-3">
         <button class="rounded-md hover:bg-lilac py-1.5 px-3" @click="closeReport">Отмена</button>
@@ -54,6 +54,7 @@ const sendReport = async () => {
       closeReport();
     } else {
       error.value = response.data;
+      console.log(error.value)
     }
   } catch (error) {
     console.log(error);

@@ -28,6 +28,10 @@ api.interceptors.response.use(
                 case 401:
                     if (errorMessage === "Неверный логин или пароль") {
                         console.log(errorMessage)
+                    } else if (errorMessage === "Вы заблокированы") {
+                        alert("Вы заблокированы!");
+                        localStorage.removeItem('authToken');
+                        router.push('/signin');
                     } else {
                         alert("Вы не авторизованы, пожалуйства, войдите!");
                         localStorage.removeItem('authToken');

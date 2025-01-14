@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router';
 import SignIn from "@/views/SignIn.vue";
 import SignUp from "@/views/SignUp.vue";
 import Messages from "@/views/Home.vue";
+import Admin from "@/components/Admin.vue";
 
 const routes = [
     {
@@ -20,7 +21,13 @@ const routes = [
         path: '/home',
         name: "home",
         component: Messages,
-        meta: {requiresAuth: true}
+        meta: {requiresAuth: true, roles: ['USER']}
+    },
+    {
+        path: '/admin',
+        name: "admin",
+        component: Admin,
+        meta: {requiresAuth: true, roles: ['ADMIN']}
     }
 ]
 
@@ -31,12 +38,16 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     const isAuthenticated = !!localStorage.getItem('authToken');
+    const userRole = localStorage.getItem('role')
     if (to.meta.requiresAuth && !isAuthenticated) {
         alert('Сначала войдите в систему!');
         next('/signin');
-    } else {
-        next();
     }
+    if (to.meta.roles && !to.meta.roles.includes(userRole)) {
+        alert('У вас нет доступа к этому разделу!');
+        return next('/signin');
+    }
+    next()
 });
 
 export default router;
